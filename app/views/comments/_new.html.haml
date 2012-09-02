@@ -1,0 +1,5 @@
+=form_tag comments_path do
+  =text_field_tag :'comment[title]'
+  =text_area_tag :'comment[content]'
+  =number_field_tag :'comment[article_id]', article_id, type: 'hidden'
+  =submit_tag

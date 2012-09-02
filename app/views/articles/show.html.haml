@@ -1,0 +1,28 @@
+%p#notice= notice
+
+.row
+  .span3
+    %p
+      =render partial:'articletitle', collection: @articletitle
+  .span4
+    %p
+      %h3 Author:
+
+    %p
+      %h2=@article.title
+    %p
+      =image_tag @article.image_path unless @article.image_path.nil?
+
+    %p
+      =@article.content
+
+    %p= render 'comments/new', article_id: @article.id
+    %p
+      %b Comments:
+      = render @comments
+
+
+
+  = link_to 'Edit', edit_article_path(@article)
+  \|
+  = link_to 'Back', articles_path
