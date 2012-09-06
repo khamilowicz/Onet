@@ -22,10 +22,10 @@ end
 
 gem 'jquery-rails'
 
+  gem 'faker'
 
 group :test, :development do
   gem 'lorem'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
