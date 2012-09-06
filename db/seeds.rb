@@ -16,7 +16,7 @@
   })
   a.popularity = Random.rand(0..12)
   a.save
-  rand(0..10).times do
+  Random.rand(0..10).times do
     a.comments.create(
       {
         title: Faker::Lorem.sentence,
