@@ -26,8 +26,12 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'lorem'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'spork'
 end
 
 gem 'twitter-bootstrap-rails'

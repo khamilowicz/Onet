@@ -16,4 +16,9 @@ describe "articles/show" do
     rendered.should match(/MyText/)
   end
 
+  it 'shows "back" link' do
+    render
+    rendered.should have_link 'Back'
+  end
+
 end

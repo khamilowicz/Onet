@@ -20,6 +20,48 @@ body {
 // Font Awesome
 @import "fontawesome";
 
+.article{
+	@margin-focus: 5px;
+	@padding-width: 10px;
+	@margin-width: 10px;
+	@border-width: 1px;
+	@border-color: rgb(160, 149, 149);
+	@inside-color: white;
+	@inside-color-focus: rgba(31, 151, 35, 0.1);
+	@size: 250px;
+
+	border-style: solid;
+	border-color: @border-color;
+	border-width: @border-width;
+	border-radius: 5px;
+
+	&.span3 {
+		width: @size;
+		height: @size;
+	}
+	&.span6 {
+		width: 2*(@size + 2*@margin-width);
+		height: @size;
+	}
+	&.span9 {
+		width: 2*(@size + 2*@margin-width);
+		height: 2*(@size + 2*@margin-width);
+	}
+	overflow: hidden;
+
+	background-color: @inside-color;
+
+	padding: @padding-width;
+	margin: @margin-width;
+	&:hover {
+		padding: @padding-width + @margin-focus;
+		margin: @margin-width - @margin-focus;
+		background-color: @inside-color-focus;
+		border-color: @inside-color-focus;
+
+	}
+}
+
 // Your custom LESS stylesheets goes here
 //
 // Since bootstrap was imported above you have access to its mixins which

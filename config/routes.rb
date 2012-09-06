@@ -1,7 +1,13 @@
 Onet::Application.routes.draw do
+  get "categories/create"
+
+  get "categories/destroy"
+
   resources :comments
 
   resources :articles
+
+  root to: 'articles#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

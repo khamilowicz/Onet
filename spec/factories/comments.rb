@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    title Lorem::Base::new('words', 4)
-    content Lorem::Base::new('words', 100)
+    title Faker::Lorem.sentence
+    content  Faker::Lorem.sentences 4
     article
   end
   

@@ -13,6 +13,15 @@
     = f.label :content
     = f.text_area :content
   .field
+    = select_tag 'categories', options_from_collection_for_select( @categories, 'name', 'name')
+  -#.field
+    -#- @categories.each do |c|
+      -#= f.label c.name
+      -#= f.check_box :categories
+  .field
+    = label_tag "New category"
+    = text_field_tag :new_category_name
+  .field
     = f.label :image_path
     = f.file_field :image_path
   .actions

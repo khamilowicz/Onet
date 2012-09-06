@@ -1,0 +1,8 @@
+=content_tag :div, class: ['article', article.importance_size] do 
+  %h2=article.title
+  - article.categories.each do |c|
+    = c.name
+  = "Popularity #{article.popularity}"
+  %br
+  = article.shorten
+  = link_to "Read", article_path(article)

@@ -11,7 +11,7 @@ describe "Articles" do
 
   describe 'show Ariticle' do
     before(:each) do
-      @article = FactoryGirl.create(:article)
+      @article = FactoryGirl.create(:article_with_comments)
     end
     it 'should show field Author' do
       visit article_path(@article)

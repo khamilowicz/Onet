@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+  require 'articles_helper.rb'
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.order(:popularity).reverse
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @articletitle = Article.all
-    @comments = @article.comments.all
+    @article.popularity += 1
+    @article.save
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,6 +29,8 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @categories = Category.all
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +47,10 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
+    @article .popularity = 0;
+    @article.categories << Category.find_by_name(params[:categories]) unless params[:categories] == 'Create category'
+    @article.categories << Category.find_or_create_by_name(params[:new_category_name]) unless params[:new_category_name].nil?
+
     unless params[:article][:image_path].nil?
       file_io = params[:article][:image_path]
       File.open(Rails.root.join('public', 'images', file_io.original_filename), 'wb') do |file|

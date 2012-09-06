@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+10.times do
+  a = Article.new(
+    {
+    title: Faker::Lorem.sentence, 
+    content: Faker::Lorem.paragraphs(Random.rand(10..20)),
+    image_path: '/'
+  })
+  a.popularity = Random.rand(0..12)
+  a.save
+  rand(0..10).times do
+    a.comments.create(
+      {
+        title: Faker::Lorem.sentence,
+        content: Faker::Lorem.sentences(Random.rand(2..12))
+      }
+    )
+  end
+
+end
+#10.times {FactoryGirl.create(:article_with_comments)}
+Category.create(name: 'Create category')
