@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   require 'articles_helper.rb'
+  before_filter :authenticate_editor!, except: [:show, :index]
   # GET /articles
   # GET /articles.json
   def index
@@ -51,6 +52,8 @@ class ArticlesController < ApplicationController
     @article.categories << Category.find_by_name(params[:categories]) unless params[:categories] == 'Create category'
     @article.categories << Category.find_or_create_by_name(params[:new_category_name]) unless params[:new_category_name].nil?
 
+    @article.editor = current_editor
+
     unless params[:article][:image_path].nil?
       file_io = params[:article][:image_path]
       File.open(Rails.root.join('public', 'images', file_io.original_filename), 'wb') do |file|
@@ -97,4 +100,10 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def signed?
+    redirect_to new_editor_session_path unless editor_signed_in?
+  end
+
 end

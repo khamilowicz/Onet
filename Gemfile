@@ -23,8 +23,10 @@ end
 gem 'jquery-rails'
 
   gem 'faker'
+  gem 'devise'
 
 group :test, :development do
+  gem 'hirb'
   gem 'lorem'
   gem 'rspec-rails'
   gem 'factory_girl_rails'

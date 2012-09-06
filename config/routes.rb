@@ -1,5 +1,9 @@
 Onet::Application.routes.draw do
+
+  devise_for :editors
+
   get "categories/create"
+  get "categories/:category" => "category#show", as: 'category'
 
   get "categories/destroy"
 

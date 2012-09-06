@@ -4,9 +4,9 @@
   .span3
     %p
       =render partial:'articletitle', collection: @articletitle
-  .span4
+  .span6
     %p
-      %h3 Author:
+      %h3= "Author: #{@article.editor.username}"
 
     %p
       %h2=@article.title
@@ -21,8 +21,10 @@
       %b Comments:
       = render @article.comments
 
-
-
   = link_to 'Edit', edit_article_path(@article)
   \|
   = link_to 'Back', articles_path
+  .span3
+    %p
+      -@article.categories.each do |cat|
+        = link_to cat.name, category_path(cat)

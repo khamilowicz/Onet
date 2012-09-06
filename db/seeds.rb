@@ -7,42 +7,33 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#10.times do
-  #a = Article.new(
-    #{
-    #title: Faker::Lorem.sentence, 
-    #content: Faker::Lorem.paragraphs(Random.rand(10..20)),
-    #image_path: '/'
-  #})
-  #a.popularity = Random.rand(0..12)
-  #a.save
-  #Random.rand(0..10).times do
-    #a.comments.create(
-      #{
-        #title: Faker::Lorem.sentence,
-        #content: Faker::Lorem.sentences(Random.rand(2..12))
-      #}
-    #)
-  #end
+@user = Editor.create({
+  username: 'Mega',
+  email: 'example@wp.pl',
+  password: 'secret',
+  password_confirmation: 'secret'
+})
 
-#end
+
+
 10.times do
   a = Article.new(
     {
     title: Faker::Lorem.sentence, 
-    content: Faker::Lorem.paragraphs(5),
+    content: Faker::Lorem.paragraphs(Random.rand(10..20)),
     image_path: '/'
   })
-  a.popularity = 5
+  a.popularity = Random.rand(0..12)
   a.save
-  10.times do
+  Random.rand(0..10).times do
     a.comments.create(
       {
         title: Faker::Lorem.sentence,
-        content: Faker::Lorem.sentences(5)
+        content: Faker::Lorem.sentences(Random.rand(2..12))
       }
     )
   end
+  @user.articles << a
 
 end
 #10.times {FactoryGirl.create(:article_with_comments)}

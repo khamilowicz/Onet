@@ -1,6 +1,6 @@
 @import "twitter/bootstrap/bootstrap";
 body { 
-	padding-top: 60px;
+	padding-top: 0;
 }
 
 @import "twitter/bootstrap/responsive";
@@ -20,7 +20,14 @@ body {
 // Font Awesome
 @import "fontawesome";
 
+
+.articles{
+	@margin: 20px;
+	margin-left: @margin;
+	margin-right: @margin;
+}
 .article{
+	position: relative;
 	@margin-focus: 5px;
 	@padding-width: 10px;
 	@margin-width: 10px;
@@ -35,6 +42,11 @@ body {
 	border-width: @border-width;
 	border-radius: 5px;
 
+	h2{
+		max-height: 3em;
+		overflow: hidden;
+	
+	}
 	&.span3 {
 		width: @size;
 		height: @size;
